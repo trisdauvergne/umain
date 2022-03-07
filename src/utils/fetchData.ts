@@ -1,5 +1,6 @@
 export const fetchData = async (url: string) => {
     const data = await fetch(url);
+    console.log('in fetch data', data);
     if (data.ok) {
         const returnData = await data.json();
         return returnData;

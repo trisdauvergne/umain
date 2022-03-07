@@ -11,6 +11,12 @@ const Restaurants = () => {
     const fetchRestaurantData = async () => {
         const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);
         setRestaurants(data);
+    };
+
+    const fetchMenuData = async (restaurantId: number) => {
+        console.log('fetchMenuData called')
+        const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/${restaurantId}/menu`);
+        console.log('fetchMenuData data:', data);
     }
 
     useEffect(() => {
@@ -28,7 +34,7 @@ const Restaurants = () => {
                     <h4>{restaurant.name}</h4>
                     <p>{restaurant.address1}</p>
                     <p>{restaurant.address2}</p>
-                    <button>View menu</button>
+                    <button onClick={() => fetchMenuData(restaurant.id)}>View menu</button>
                 </div>))}
           </div>
         )

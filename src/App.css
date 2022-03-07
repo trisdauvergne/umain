@@ -3,3 +3,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.components {
+  display: grid;
+  grid-template-columns: 25% 55% 30%;
+}
