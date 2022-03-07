@@ -1,19 +1,20 @@
 import React, {
     useState,
-    useEffect
+    useEffect,
 } from 'react';
 import { IRestaurant } from '../../interfaces/Restaurant';
+import { fetchData } from '../../utils/fetchData';
 
 const Restaurants = () => {
     const [ restaurants, setRestaurants ] = useState([]);
 
+    const fetchRestaurantData = async () => {
+        const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);
+        setRestaurants(data);
+    }
+
     useEffect(() => {
-        fetch(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`)
-        .then((response) => response.json())
-        .then((actualData) => setRestaurants(actualData))
-        .catch((err) => {
-        console.log(err.message);
-        });
+        fetchRestaurantData();
     }, []);
 
     console.log('in restaurants component', restaurants);
@@ -34,7 +35,7 @@ const Restaurants = () => {
     } else {
         return (
             <div>
-                <h3 data-testid="restaurant-heading">Restaurants loading...</h3>
+                <h3>Restaurants loading...</h3>
             </div>
         )
     }

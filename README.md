@@ -22,4 +22,4 @@ xxxxx
 
 ### Packages used
 
-xxxxx
+npm install --save-dev jest-fetch-mock - for testing after fetch
