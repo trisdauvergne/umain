@@ -14,15 +14,19 @@
   margin: auto;
 }
 
+.section-heading {
+  @include header-text-style;
+  height: 10vh;
+}
+
 section {
   height: 90vh;
   padding-left: $sm-horizontal-space;
   padding-top: $sm-vertical-space;
 }
 
-.section-heading {
-  @include header-text-style;
-  height: 10vh;
+div {
+  margin-bottom: 2rem;
 }
 
 h3 {
@@ -34,25 +38,20 @@ h4 {
   margin-bottom: 1.5rem;
 }
 
-div {
-  margin-bottom: 2rem;
+p {
+  font-family: $body;
 }
 
 button {
   font-family: $body;
   background-color: transparent;
   border: none;
-  border-radius: 25px;
   font-size: 1rem;
 }
 
 button:hover {
   font-weight: 800;
   font-style: italic;
-}
-
-p {
-  font-family: $body;
 }
 
 .components {

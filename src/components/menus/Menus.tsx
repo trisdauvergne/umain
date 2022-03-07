@@ -60,7 +60,7 @@ const Menus = () => {
             {visibleDetails && <h4>{itemCategory}</h4>}
             {visibleDetails && itemsByCategory && itemsByCategory.map((item: IMenuItem, i: number) => (
               <div key={i}>
-                <p>{item.name}, {item.price}</p>
+                <p>{item.name}, {item.price}sek</p>
                 {item.topping && item.topping.map((item: string, i: number) => <li key={i}>{item}</li>)}
                 <button onClick={() => addItemToCart(item)}>Add to cart</button>
               </div>

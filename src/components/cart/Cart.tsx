@@ -27,7 +27,7 @@ const Cart = () => {
         <h2 className='section-heading'>Cart has {cart.length} items</h2>
         {cart.map((item: IMenuItem, i: number) => (
           <div key={i}>
-            <p>{item.name} - {item.price}</p>
+            <p>{item.name}, {item.price}sek</p>
           </div>
         ))}
         <p>Total: {prices.reduce((a, b) => a + b)}</p>
