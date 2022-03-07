@@ -1,0 +1,11 @@
+@import "../../styles/spacing";
+
+@media (max-width: 768px) {
+  .cart {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-around;
+    display: grid;
+    margin-bottom: $lg-vertical-space;
+  }
+}

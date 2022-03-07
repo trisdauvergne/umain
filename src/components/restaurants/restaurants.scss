@@ -1,3 +1,10 @@
-.restaurant-info > button {
+.restaurant-info > div > button {
   margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .restaurant-container {
+    display: flex;
+    justify-content: space-around;
+  }
 }
