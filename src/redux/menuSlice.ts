@@ -3,28 +3,31 @@ import {
     PayloadAction
 } from '@reduxjs/toolkit';
 import { RootState } from './store';
-import { IMenuItem } from '../../interfaces/MenuItem';
+import { IMenuItem } from '../interfaces/MenuItem';
 
-interface MenuState {
+interface IMenuState {
     menu: IMenuItem[]
 };
 
-const initialState: MenuState = {
+const initialMenuState: IMenuState = {
     menu: []
 };
 
 export const menuSlice = createSlice({
     name: 'menu',
-    initialState,
+    initialState: {
+        initialMenuState,
+    }, 
     reducers: {
         saveMenu: (state, action: PayloadAction<IMenuItem[]>) => {
-            state.menu = action.payload
-        }
+            state.initialMenuState.menu = action.payload
+        },
     }  
 });
 
+
 export const { saveMenu } = menuSlice.actions;
 
-export const selectMenu = (state: RootState) => state.menu.menu;
+export const selectMenu = (state: RootState) => state.menu.initialMenuState.menu;
 
 export default menuSlice.reducer;

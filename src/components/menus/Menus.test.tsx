@@ -4,7 +4,7 @@ import {
     waitFor
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import store from '../redux/store';
+import store from '../../redux/store';
 import Menus from './Menus';
 
 describe('Menus component', () => {

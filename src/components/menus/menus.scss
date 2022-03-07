@@ -1,0 +1,27 @@
+@import "../../styles/spacing";
+
+.menu-container {
+  display: grid;
+  height: 90vh;
+  grid-template-columns: 30% 70%;
+}
+
+.menu-categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-categories > button {
+  margin-bottom: $sm-vertical-space;
+  font-size: 1.25rem;
+  text-align: left;
+}
+
+.menu-categories > button::after {
+  font-style: italic;
+  font-weight: 800;
+}
+
+.menu-details {
+  border: 2px dashed fuchsia;
+}

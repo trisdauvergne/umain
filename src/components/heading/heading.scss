@@ -1,0 +1,10 @@
+@import "../../styles/font";
+
+.heading {
+  font-family: $heading;
+  font-size: 4rem;
+  font-weight: 700;
+  height: 10vh;
+  text-align: center;
+  border: 1px dashed black;
+}

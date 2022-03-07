@@ -2,8 +2,7 @@ import {
     createSlice,
     PayloadAction
 } from "@reduxjs/toolkit";
-import { IMenuItem } from "../../interfaces/MenuItem";
-// import Cart from "../cart/Cart";
+import { IMenuItem } from "../interfaces/MenuItem";
 import type { RootState } from "./store";
 
 interface CartState {

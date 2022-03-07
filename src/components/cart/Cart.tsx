@@ -7,7 +7,8 @@ import { IMenuItem } from '../../interfaces/MenuItem';
 import {
   selectCart,
   clearCart
-} from '../redux/cartSlice';
+} from '../../redux/cartSlice';
+import './cart.scss';
 
 const Cart = () => {
   const cart = useSelector(selectCart);
@@ -22,8 +23,8 @@ const Cart = () => {
 
   if (cart && cart.length > 0) {
     return (
-      <div>
-        <h3>Cart has {cart.length} items</h3>
+      <section className='cart'>
+        <h2 className='section-heading'>Cart has {cart.length} items</h2>
         {cart.map((item: IMenuItem, i: number) => (
           <div key={i}>
             <p>{item.name} - {item.price}</p>
@@ -31,13 +32,13 @@ const Cart = () => {
         ))}
         <p>Total: {prices.reduce((a, b) => a + b)}</p>
         <button onClick={clear}>Clear cart</button>
-      </div>
+      </section>
     )
   } else {
     return (
-      <div>
-        <h3>Cart empty</h3>
-      </div>
+      <section className='cart'>
+        <h2 className='section-heading'>Cart empty...</h2>
+      </section>
     )
   }
 }
