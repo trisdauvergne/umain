@@ -1,9 +1,12 @@
 @import "../../styles/spacing";
 
+.menu > .section-heading {
+  text-align: center;
+}
 .menu-container {
   display: grid;
   height: 90vh;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 40% 60%;
 }
 
 .menu-categories {
@@ -20,8 +23,4 @@
 .menu-categories > button::after {
   font-style: italic;
   font-weight: 800;
-}
-
-.menu-details {
-  border: 2px dashed fuchsia;
 }

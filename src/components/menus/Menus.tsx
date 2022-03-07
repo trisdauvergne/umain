@@ -7,16 +7,22 @@ import {
   useDispatch
 } from 'react-redux';
 import { IMenuItem } from '../../interfaces/MenuItem';
-import { selectMenu } from '../../redux/menuSlice';
+import {
+  selectMenu,
+  selectDetailsVisibility,
+  changeMenuDetailVisibility
+ } from '../../redux/menuSlice';
 import { selectRestaurant } from '../../redux/restaurantSlice';
 import { addToCart } from '../../redux/cartSlice';
 
 const Menus = () => {
   const menu = useSelector(selectMenu);
+  const visibleDetails = useSelector(selectDetailsVisibility);
   const restaurantName = useSelector(selectRestaurant);
+  
   const [ itemsByCategory, setItemsByCategory ] = useState<IMenuItem[]>([]);
   const [ itemCategory, setItemCategory ] = useState('');
-  const [ visibleDetails, setVisibleDetails ] = useState(false);
+
   const dispatch = useDispatch();
 
   const addItemToCart = (item: IMenuItem) => {
@@ -32,12 +38,12 @@ const Menus = () => {
   });
 
   const filterType = (type: string) => {
-    setVisibleDetails(false);
+    dispatch(changeMenuDetailVisibility(false));
     setItemCategory(type);
     let items: IMenuItem[];
     items = menu.filter(item => item.category === type);
     setItemsByCategory(items);
-    setVisibleDetails(true);
+    dispatch(changeMenuDetailVisibility(true));
   }
  
   if (menu && menu.length > 0) {
@@ -51,7 +57,7 @@ const Menus = () => {
             ))}
           </div>
           <div className='menu-details'>
-            <h4>{itemCategory}</h4>
+            {visibleDetails && <h4>{itemCategory}</h4>}
             {visibleDetails && itemsByCategory && itemsByCategory.map((item: IMenuItem, i: number) => (
               <div key={i}>
                 <p>{item.name}, {item.price}</p>

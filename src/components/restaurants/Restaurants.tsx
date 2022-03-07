@@ -5,9 +5,15 @@ import React, {
 import './restaurants.scss';
 import { IRestaurant } from '../../interfaces/Restaurant';
 import { fetchData } from '../../utils/fetchData';
-import { useDispatch } from 'react-redux';
+import {
+    useDispatch,
+    useSelector
+} from 'react-redux';
 import {
     saveMenu,
+    selectVisibility,
+    changeMenuVisibility,
+    changeMenuDetailVisibility
 } from '../../redux/menuSlice';
 import {
     saveRestaurant
@@ -15,7 +21,7 @@ import {
 
 const Restaurants = () => {
     const [ restaurants, setRestaurants ] = useState<IRestaurant[]>([]);
-    const [ savedRestaurant, setSavedRestaurant ] = useState('');
+    const visible = useSelector(selectVisibility);
 
     const dispatch = useDispatch();
 
@@ -25,16 +31,20 @@ const Restaurants = () => {
     };
 
     const fetchMenuData = async (restaurantId: number, restaurant: IRestaurant) => {
+        dispatch(changeMenuVisibility(false));
+        dispatch(changeMenuDetailVisibility(false));
+        dispatch(saveMenu([]));
         const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/${restaurantId}/menu`);
         dispatch(saveMenu(data));
         dispatch(saveRestaurant(restaurant.name));
+        dispatch(changeMenuVisibility(true));
     }
 
     useEffect(() => {
         fetchRestaurantData();
     }, []);
 
-    console.log('in restaurants component', restaurants);
+    console.log('in restaurants component', restaurants, visible);
 
     if (restaurants && restaurants.length > 0) {
         return (
