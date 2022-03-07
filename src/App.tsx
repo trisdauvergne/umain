@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import Restaurants from './components/restaurants/Restaurants';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <h1>Umain</h1>
+      <h1>Umain Pizza App</h1>
+      <Restaurants />
     </div>
   );
 }
