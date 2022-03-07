@@ -1,13 +1,18 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import {
+  useSelector,
+  useDispatch
+} from 'react-redux';
 import { IMenuItem } from '../../interfaces/MenuItem';
 import { selectMenu } from '../redux/menuSlice';
+import { addToCart } from '../redux/cartSlice';
 
 const Menus = () => {
   const menu = useSelector(selectMenu);
+  const dispatch = useDispatch();
 
   const addItemToCart = (item: IMenuItem) => {
-    console.log(item);
+    dispatch(addToCart(item));
   }
   
   if (menu && menu.length > 0) {

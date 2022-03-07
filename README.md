@@ -13,6 +13,7 @@ xxxxx
 - Wrote a basic test for the restaurant component to check that the header had rendered
 - Moved on to menus component. Needed to figure out a way for passing data from the restaurant to the menus component. Didn't want to pass it as props as this felt clunky.
 - This caused an issue with testing as components also needed to be wrapped with a provider in tests.
+- Moved on to cart and used redux to store the cart. Created a cart slice
 
 ### Future improvements
 
