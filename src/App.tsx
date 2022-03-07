@@ -6,7 +6,9 @@ const App = () => {
   return (
     <div className="App">
       <h1>Umain Pizza App</h1>
-      <Restaurants />
+      <div className="components">
+        <Restaurants />
+      </div>
     </div>
   );
 }

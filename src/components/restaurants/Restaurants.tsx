@@ -21,7 +21,7 @@ const Restaurants = () => {
     if (restaurants && restaurants.length > 0) {
         return (
           <div>
-              <h3>Restaurants component</h3>
+              <h3 data-testid="restaurant-heading">Restaurants</h3>
               {restaurants.map((restaurant: IRestaurant, i: number) => (
                 <div key={i}>
                     <h4>{restaurant.name}</h4>
@@ -34,10 +34,10 @@ const Restaurants = () => {
     } else {
         return (
             <div>
-                <h3>Restaurants loading...</h3>
+                <h3 data-testid="restaurant-heading">Restaurants loading...</h3>
             </div>
         )
     }
 }
 
-export default Restaurants
+export default Restaurants;
