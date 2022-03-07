@@ -28,3 +28,5 @@ xxxxx
 npm install --save-dev jest-fetch-mock - for testing after fetch
 npm install @reduxjs/toolkit - for sharing state
 npm install react-redux
+npm i -D node-sass
+npm i -D @types/node-sass

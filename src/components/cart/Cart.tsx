@@ -1,6 +1,4 @@
-import React, { 
-  // useState
-} from 'react';
+import React from 'react';
 import {
   useSelector,
   useDispatch
@@ -21,7 +19,7 @@ const Cart = () => {
   const clear = () => {
     dispatch(clearCart());
   };
-  
+
   if (cart && cart.length > 0) {
     return (
       <div>

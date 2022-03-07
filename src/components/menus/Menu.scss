@@ -1,0 +1,15 @@
+@import "../../styles/spacing";
+.menu {
+  display: grid;
+  grid-template-columns: 30% 40%;
+}
+
+.menu-categories {
+  display: grid;
+  border: 2px dashed orange;
+}
+
+.menu-details {
+  display: grid;
+  border: 2px dashed fuchsia;
+}
