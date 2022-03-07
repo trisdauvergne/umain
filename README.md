@@ -17,7 +17,7 @@ xxxxx
 
 ### Future improvements
 
-xxxxx
+- Remove items from cart
 
 ### Challenges
 

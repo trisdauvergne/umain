@@ -3,7 +3,7 @@ import {
     PayloadAction
 } from "@reduxjs/toolkit";
 import { IMenuItem } from "../../interfaces/MenuItem";
-import Cart from "../cart/Cart";
+// import Cart from "../cart/Cart";
 import type { RootState } from "./store";
 
 interface CartState {
