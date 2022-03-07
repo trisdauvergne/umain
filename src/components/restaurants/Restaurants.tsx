@@ -4,9 +4,13 @@ import React, {
 } from 'react';
 import { IRestaurant } from '../../interfaces/Restaurant';
 import { fetchData } from '../../utils/fetchData';
+import { useDispatch } from 'react-redux';
+import { saveMenu } from '../redux/menuSlice';
 
 const Restaurants = () => {
-    const [ restaurants, setRestaurants ] = useState([]);
+    const [ restaurants, setRestaurants ] = useState<IRestaurant[]>([]);
+
+    const dispatch = useDispatch();
 
     const fetchRestaurantData = async () => {
         const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);
@@ -14,9 +18,8 @@ const Restaurants = () => {
     };
 
     const fetchMenuData = async (restaurantId: number) => {
-        console.log('fetchMenuData called')
         const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/${restaurantId}/menu`);
-        console.log('fetchMenuData data:', data);
+        dispatch(saveMenu(data));
     }
 
     useEffect(() => {
