@@ -24,10 +24,13 @@ export const CartSlice = createSlice({
                 action.payload
             ]
         },
+        clearCart: (state) => {
+            state.cart = [];
+        }
     },
 });
 
-export const { addToCart } = CartSlice.actions;
+export const { addToCart, clearCart } = CartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.cart;
 

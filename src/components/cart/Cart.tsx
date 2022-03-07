@@ -1,16 +1,27 @@
 import React, { 
-  useState
+  // useState
 } from 'react';
-import { useSelector } from 'react-redux';
+import {
+  useSelector,
+  useDispatch
+} from 'react-redux';
 import { IMenuItem } from '../../interfaces/MenuItem';
-import { selectCart } from '../redux/cartSlice';
+import {
+  selectCart,
+  clearCart
+} from '../redux/cartSlice';
 
 const Cart = () => {
   const cart = useSelector(selectCart);
+  const dispatch = useDispatch();
 
   let prices: number[] = [];
   cart.map(item => prices.push(item.price));
 
+  const clear = () => {
+    dispatch(clearCart());
+  };
+  
   if (cart && cart.length > 0) {
     return (
       <div>
@@ -21,6 +32,7 @@ const Cart = () => {
           </div>
         ))}
         <p>Total: {prices.reduce((a, b) => a + b)}</p>
+        <button onClick={clear}>Clear cart</button>
       </div>
     )
   } else {
