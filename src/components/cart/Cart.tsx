@@ -1,6 +1,5 @@
 import React, {
   useEffect,
-  // useState
 } from 'react';
 import {
   useSelector,
@@ -23,7 +22,6 @@ const Cart = () => {
   const cart = useSelector(selectCart);
   const existingOrder = useSelector(selectOrder);
   const cartTotal = useSelector(selectCartTotal);
-  // const order = useSelector(selectOrder);
   const dispatch = useDispatch();
 
   let prices: number[] = [];
@@ -41,8 +39,6 @@ const Cart = () => {
     dispatch(saveOrder(data));
     dispatch(changeModalVisibility(true));
   };
-
-  console.log('in cart', existingOrder.status);
   
   if (cart && cart.length > 0) {
     return (

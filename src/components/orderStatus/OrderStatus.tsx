@@ -28,32 +28,28 @@ const OrderStatus = () => {
     useEffect(() => {
         fetchDetails();
     }, []);
-
-    if (placedOrder && placedOrder.orderedAt !== '') {
-        console.log('there is something in order status', placedOrder);
-    }
-
-  return (
-    <section className='order-status'>
-        {placedOrder && placedOrder.orderedAt !== '' && (
-            <div>
-                <h3>Order Status: {placedOrder.status}</h3>
-                <p>Status: {placedOrder.status}</p>
-                <p>Order id: {placedOrder.orderId}</p>
+    
+    return (
+        <section className='order-status'>
+            {placedOrder && placedOrder.orderedAt !== '' && (
                 <div>
-                    <p>Items:</p>
-                    {placedOrder.cart.map((item: any, i: number) =>(
-                        <div key={i}>
-                            <p>Item ID: {item.menuItemId}</p>
-                            <p>Quantity: {item.quantity}</p>
-                        </div>
-                    ))}
+                    <h3>Order Status: {placedOrder.status}</h3>
+                    <p>Status: {placedOrder.status}</p>
+                    <p>Order id: {placedOrder.orderId}</p>
+                    <div>
+                        <p>Items:</p>
+                        {placedOrder.cart.map((item: any, i: number) =>(
+                            <div key={i}>
+                                <p>Item ID: {item.menuItemId}</p>
+                                <p>Quantity: {item.quantity}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <h4>Total price: {placedOrder.totalPrice}sek</h4>
                 </div>
-                <h4>Total price: {placedOrder.totalPrice}sek</h4>
-            </div>
-        )}
-    </section>
-  )
+            )}
+        </section>
+    )
 }
 
 export default OrderStatus

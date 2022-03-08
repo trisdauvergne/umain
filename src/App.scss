@@ -12,12 +12,13 @@
   height: 100vh;
   width: 80vw;
   margin: auto;
+  padding-top: $md-vertical-space;
 }
 
 section {
   height: 90vh;
-  padding-left: $sm-horizontal-space;
-  padding-top: $sm-vertical-space;
+  padding-left: $md-horizontal-space;
+  padding-top: $md-vertical-space;
 }
 
 .section-heading {
@@ -43,13 +44,16 @@ button {
   background-color: transparent;
   border: none;
   font-size: 1rem;
+  margin: $sm-vertical-space 0 $md-vertical-space 0;
+  border: 3px solid $grey;
+  padding: 2px;
 }
 
 button:hover {
-  border: 2px solid black;
+  border: 3px solid black;
   font-weight: 800;
   font-style: italic;
-  box-shadow: 3px 3px $grey;
+  box-shadow: 5px 5px $grey;
 }
 
 li {
@@ -78,8 +82,8 @@ li {
 
   section {
     height: 100%;
-    padding-left: $sm-horizontal-space;
-    padding-top: $sm-vertical-space;
+    padding-left: $md-horizontal-space;
+    padding-top: $md-vertical-space;
   }
 
   .section-heading {

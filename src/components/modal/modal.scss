@@ -16,6 +16,7 @@
 .modal-btns {
   display: grid;
   grid-template-columns: 40% 40%;
+  justify-content: space-evenly;
 }
 
 .modal > .section-heading {
