@@ -9,6 +9,7 @@ import {
 import { IMenuItem } from '../../interfaces/MenuItem';
 import {
   selectMenu,
+  selectVisibility,
   selectDetailsVisibility,
   changeMenuDetailVisibility
 } from '../../redux/menuSlice';
@@ -20,6 +21,7 @@ import { addToCart } from '../../redux/cartSlice';
 
 const Menus = () => {
   const menu = useSelector(selectMenu);
+  const visibleMenu = useSelector(selectVisibility);
   const visibleDetails = useSelector(selectDetailsVisibility);
   const restaurantName = useSelector(selectRestaurant);
   const restaurantId = useSelector(selectRestaurantId)
@@ -58,11 +60,11 @@ const Menus = () => {
       <section className='menu'>
         <h2 data-testid='menu-heading' className='section-heading'>{restaurantName}'s menu</h2>
         <div className='menu-container'>
-          <div  data-testid='menu-categories' className='menu-categories'>
+          {visibleMenu && <div data-testid='menu-categories' className='menu-categories'>
             {newArr.map((item, i: number) => (
               <button onClick={() => filterType(item)} key={i}>{item}</button>
             ))}
-          </div>
+          </div>}
           <div className='menu-details'>
             {visibleDetails && <h4>{itemCategory}</h4>}
             {visibleDetails && itemsByCategory && itemsByCategory.map((item: IMenuItem, i: number) => (

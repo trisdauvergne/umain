@@ -2,26 +2,26 @@ import React from 'react';
 import {
     useSelector,
     useDispatch
-  } from 'react-redux';
-  import { IMenuItem } from '../../interfaces/MenuItem';
-  import {
-    selectCart,
+} from 'react-redux';
+import {
     selectCartTotal,
     selectModalVisibility,
     changeModalVisibility,
     clearCart,
     selectOrder
-  } from '../../redux/cartSlice';
+} from '../../redux/cartSlice';
+import {
+    changeMenuVisibility,
+    changeMenuDetailVisibility,
+    clearMenu
+} from '../../redux/menuSlice'
 import './modal.scss';
 
 const Modal = () => {
-    const cart = useSelector(selectCart);
     const modalVisible = useSelector(selectModalVisibility);
     const cartTotal = useSelector(selectCartTotal);
     const order = useSelector(selectOrder);
     const dispatch = useDispatch();
-
-    console.log('in modal', order);
 
     const closeModal = () => {
         dispatch(changeModalVisibility(false));
@@ -30,6 +30,9 @@ const Modal = () => {
     const sendOrder = () => {
         dispatch(changeModalVisibility(false));
         dispatch(clearCart());
+        dispatch(changeMenuVisibility(false));
+        dispatch(changeMenuDetailVisibility(false));
+        dispatch(clearMenu());
     }
 
     if (!modalVisible) {
@@ -39,11 +42,6 @@ const Modal = () => {
     return (
         <section className='modal'>
             <h2 className='section-heading'>Your order</h2>
-            {/* <ul>
-                {cart.map((item: IMenuItem, i: number) => (
-                    <li key={i}>{item.name}, {item.price}sek</li>
-                ))}
-            </ul> */}
             <p>Order ID: {order.orderId}</p>
             <p>Status: {order.status}</p>
             <p>Esimated delivery: {order.esitmatedDelivery.toLocaleString()}</p>

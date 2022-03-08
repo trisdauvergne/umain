@@ -36,6 +36,9 @@ export const menuSlice = createSlice({
         saveMenu: (state, action: PayloadAction<IMenuItem[]>) => {
             state.initialMenuState.menu = action.payload
         },
+        clearMenu: (state) => {
+            state.initialMenuState.menu = []
+        },
         changeMenuVisibility: (state, action: PayloadAction<boolean>) => {
             state.initialVisibleState.visible = action.payload
         },
@@ -49,7 +52,8 @@ export const menuSlice = createSlice({
 export const {
     saveMenu,
     changeMenuVisibility,
-    changeMenuDetailVisibility
+    changeMenuDetailVisibility,
+    clearMenu
 } = menuSlice.actions;
 
 export const selectMenu = (state: RootState) => state.menu.initialMenuState.menu;
