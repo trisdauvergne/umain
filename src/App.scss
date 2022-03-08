@@ -1,5 +1,6 @@
 @import "./styles/font";
 @import "./styles/spacing";
+@import "./styles/color";
 
 * {
   padding: 0;
@@ -13,15 +14,15 @@
   margin: auto;
 }
 
-.section-heading {
-  @include header-text-style;
-  height: 10vh;
-}
-
 section {
   height: 90vh;
   padding-left: $sm-horizontal-space;
   padding-top: $sm-vertical-space;
+}
+
+.section-heading {
+  @include header-text-style;
+  height: 10vh;
 }
 
 div {
@@ -58,9 +59,14 @@ button:hover {
   grid-template-columns: 25% 50% 25%;
 }
 
+.grey {
+  @include greyed-out-header;
+}
+
 @media (max-width: 768px) {
   .App {
     width: 100vh;
+    height: 100%;
   }
 
   .components {

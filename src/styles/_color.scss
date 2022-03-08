@@ -1,0 +1,6 @@
+$grey: rgb(173, 173, 173);
+
+@mixin greyed-out-header {
+  color: $grey;
+  opacity: 0.5;
+}

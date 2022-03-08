@@ -11,7 +11,7 @@ import {
   selectMenu,
   selectDetailsVisibility,
   changeMenuDetailVisibility
- } from '../../redux/menuSlice';
+} from '../../redux/menuSlice';
 import { selectRestaurant } from '../../redux/restaurantSlice';
 import { addToCart } from '../../redux/cartSlice';
 
@@ -19,11 +19,10 @@ const Menus = () => {
   const menu = useSelector(selectMenu);
   const visibleDetails = useSelector(selectDetailsVisibility);
   const restaurantName = useSelector(selectRestaurant);
+  const dispatch = useDispatch();
   
   const [ itemsByCategory, setItemsByCategory ] = useState<IMenuItem[]>([]);
   const [ itemCategory, setItemCategory ] = useState('');
-
-  const dispatch = useDispatch();
 
   const addItemToCart = (item: IMenuItem) => {
     dispatch(addToCart(item));
@@ -72,7 +71,7 @@ const Menus = () => {
   } else {
     return (
       <section className='menu'>
-        {/* <h2 className='section-heading'>Click on a restaurant to see its menu...</h2> */}
+        <h2 className='section-heading grey'>Menus will show here...</h2>
       </section>
     )
   }

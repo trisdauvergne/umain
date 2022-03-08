@@ -17,8 +17,10 @@ const Cart = () => {
   let prices: number[] = [];
   cart.map(item => prices.push(item.price));
 
-  const clear = () => {
-    dispatch(clearCart());
+  const submitOrder = () => {
+    let orders: object[] = [];
+    cart.map(order => orders.push(order));
+    // dispatch(clearCart());
   };
 
   if (cart && cart.length > 0) {
@@ -30,14 +32,14 @@ const Cart = () => {
             <p>{item.name}, {item.price}sek</p>
           </div>
         ))}
-        <p>Total: {prices.reduce((a, b) => a + b)}</p>
-        <button onClick={clear}>Clear cart</button>
+        <p className='cart-total'>Total: {prices.reduce((a, b) => a + b)}sek</p>
+        <button onClick={submitOrder}>Clear cart</button>
       </section>
     )
   } else {
     return (
       <section className='cart'>
-        <h2 className='section-heading'>Cart empty...</h2>
+        <h2 className='section-heading grey'>Cart empty...</h2>
       </section>
     )
   }
