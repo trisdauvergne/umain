@@ -36,15 +36,17 @@ const Modal = () => {
     
     return (
         <section className='modal'>
-            <h4>Your order</h4>
+            <h2 className='section-heading'>Your order</h2>
             <ul>
                 {cart.map((item: IMenuItem, i: number) => (
                     <li key={i}>{item.name}, {item.price}sek</li>
                 ))}
             </ul>
-            <p>Total: {cartTotal}sek</p>
-            <button onClick={sendOrder}>Submit order</button>
-            <button onClick={closeModal}>Cancel</button>
+            <h4>Total: {cartTotal}sek</h4>
+            <div className="modal-btns">
+                <button onClick={sendOrder}>Submit order</button>
+                <button onClick={closeModal}>Cancel</button>
+            </div>
         </section>
     )
 }

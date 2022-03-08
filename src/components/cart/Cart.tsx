@@ -20,18 +20,16 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   let prices: number[] = [];
-  cart.map(item => prices.push(item.price));
-
+  
   useEffect(() => {
     if (cart && cart.length > 0) {
+      cart.map(item => prices.push(item.price));
       const total = prices.reduce((a, b) => a + b);
       dispatch(saveTotal(total));
     }
-  }, [cart]);
+  });
 
   const submitOrder = () => {
-    // let orders: object[] = [];
-    // cart.map(order => orders.push(order));
     dispatch(changeModalVisibility(true));
   };
 

@@ -1,12 +1,27 @@
+@import "../../styles/spacing";
+@import "../../styles/color";
+
 .modal {
   position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-color: red;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 70vh;
+  left: 30vw;
+  top: 12vh;
+  right: 30vw;
+  bottom: 12vh;
+  background-color: white;
+  border: 3px solid black;
+  box-shadow: 15px 15px $grey;
+}
+
+.modal-btns {
+  display: grid;
+  grid-template-columns: 40% 40%;
+}
+
+.modal > .section-heading {
+  text-align: center;
+}
+
+.modal-btns > button {
+  border: 1px solid;
 }

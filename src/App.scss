@@ -25,10 +25,6 @@ section {
   height: 10vh;
 }
 
-div {
-  margin-bottom: 2rem;
-}
-
 h3 {
   @include sub-header-text-style;
 }
@@ -50,8 +46,14 @@ button {
 }
 
 button:hover {
+  border: 2px solid black;
   font-weight: 800;
   font-style: italic;
+  box-shadow: 3px 3px $grey;
+}
+
+li {
+  font-family: $body;
 }
 
 .components {
