@@ -6,6 +6,7 @@ import Heading from './components/heading/Heading';
 import Cart from './components/cart/Cart';
 import Menus from './components/menus/Menus';
 import Restaurants from './components/restaurants/Restaurants';
+import Modal from './components/modal/Modal';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Restaurants />
           <Menus />
           <Cart />
+          {/* <Modal /> */}
         </div>
       </div>
     </Provider>
