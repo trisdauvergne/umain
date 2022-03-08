@@ -1,9 +1,17 @@
 @import "../../styles/font";
 
+header {
+  text-align: center;
+}
+
 .heading {
+  display: inline-block;
   font-family: $heading;
   font-size: 4rem;
   font-weight: 700;
   height: 10vh;
-  text-align: center;
+  padding: 0 3rem;
+  color: green;
+  border: 2px solid red;
+  box-shadow: 15px 15px black;
 }

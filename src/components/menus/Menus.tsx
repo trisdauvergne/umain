@@ -48,9 +48,9 @@ const Menus = () => {
   if (menu && menu.length > 0) {
     return (
       <section className='menu'>
-        <h2 className='section-heading'>{restaurantName}'s menu</h2>
+        <h2 data-testid='menu-heading' className='section-heading'>{restaurantName}'s menu</h2>
         <div className='menu-container'>
-          <div className='menu-categories'>
+          <div  data-testid='menu-categories' className='menu-categories'>
             {newArr.map((item, i: number) => (
               <button onClick={() => filterType(item)} key={i}>{item}</button>
             ))}
