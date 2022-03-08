@@ -5,11 +5,11 @@ import {
 import { IMenuItem } from "../interfaces/MenuItem";
 import type { RootState } from "./store";
 
-interface CartState {
+interface ICartState {
     cart: IMenuItem[],
 };
 
-const initialCartState: CartState = {
+const initialCartState: ICartState = {
     cart: [],
 }
 
@@ -21,11 +21,20 @@ const initialCartTotal: ICartTotal = {
     total: 0
 }
 
+interface IModalVisible {
+    modalVisible: boolean
+}
+
+const initialModalVisible: IModalVisible = {
+    modalVisible: false
+}
+
 export const CartSlice = createSlice({
     name: 'cart',
     initialState: {
         initialCartState,
-        initialCartTotal
+        initialCartTotal,
+        initialModalVisible
     },
     reducers: {
         addToCart: (state, action: PayloadAction<IMenuItem>) => {
@@ -39,6 +48,9 @@ export const CartSlice = createSlice({
         },
         saveTotal: (state, action: PayloadAction<number>) => {
             state.initialCartTotal.total = action.payload
+        },
+        changeModalVisibility: (state, action: PayloadAction<boolean>) => {
+            state.initialModalVisible.modalVisible = action.payload
         }
     },
 });
@@ -46,11 +58,14 @@ export const CartSlice = createSlice({
 export const {
     addToCart,
     clearCart,
-    saveTotal
+    saveTotal,
+    changeModalVisibility
 } = CartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.initialCartState.cart;
 
 export const selectCartTotal = (state: RootState) => state.cart.initialCartTotal.total;
+
+export const selectModalVisibility = (state: RootState) => state.cart.initialModalVisible.modalVisible;
 
 export default CartSlice.reducer;

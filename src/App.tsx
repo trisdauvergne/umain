@@ -17,7 +17,7 @@ const App = () => {
           <Restaurants />
           <Menus />
           <Cart />
-          {/* <Modal /> */}
+          <Modal />
         </div>
       </div>
     </Provider>

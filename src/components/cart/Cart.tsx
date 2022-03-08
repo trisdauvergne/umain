@@ -9,7 +9,8 @@ import { IMenuItem } from '../../interfaces/MenuItem';
 import {
   selectCart,
   saveTotal,
-  selectCartTotal
+  selectCartTotal,
+  changeModalVisibility
 } from '../../redux/cartSlice';
 import './cart.scss';
 
@@ -29,9 +30,9 @@ const Cart = () => {
   }, [cart]);
 
   const submitOrder = () => {
-    let orders: object[] = [];
-    cart.map(order => orders.push(order));
-    // dispatch(clearCart());
+    // let orders: object[] = [];
+    // cart.map(order => orders.push(order));
+    dispatch(changeModalVisibility(true));
   };
 
   if (cart && cart.length > 0) {
@@ -44,7 +45,7 @@ const Cart = () => {
           </div>
         ))}
         <p className='cart-total'>Total: {cartTotal}sek</p>
-        <button onClick={submitOrder}>Clear cart</button>
+        <button onClick={submitOrder}>Submit cart</button>
       </section>
     )
   } else {
