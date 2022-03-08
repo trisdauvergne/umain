@@ -24,15 +24,15 @@ const Restaurants = () => {
 
     if (restaurants && restaurants.length > 0) {
         return (
-          <section className='restaurants'>
-              <h2 data-testid='restaurant-heading' className='section-heading'>Restaurants</h2>
-              <div className='restaurant-container'>
-                <p>{location.loaded ? JSON.stringify(location) : "Location data loading"}</p>
+            <section className='restaurants'>
+                <h2 data-testid='restaurant-heading' className='section-heading'>Restaurants</h2>
+                <div className='restaurant-container'>
                 {restaurants.map((restaurant: IRestaurant, i: number) => (
                     <Restaurant {...restaurant} key={i}/>
                     ))}
                 </div>
-          </section>
+                <p>{location.loaded ? JSON.stringify(location) : "Location data loading"}</p>
+            </section>
         )
     } else {
         return (

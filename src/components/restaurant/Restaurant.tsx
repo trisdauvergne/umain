@@ -32,6 +32,7 @@ const Restaurant = (restaurant: IRestaurant) => {
             <h3>{restaurant.name}</h3>
             <p>{restaurant.address1}</p>
             <p>{restaurant.address2}</p>
+            <p>Lat: {restaurant.latitude}, Long: {restaurant.longitude}</p>
             <button onClick={() => fetchMenuData(restaurant.id, restaurant)}>View menu</button>
         </div>
   )

@@ -7,20 +7,21 @@ import {
   useDispatch
 } from 'react-redux';
 import { IMenuItem } from '../../interfaces/MenuItem';
-// import { ICartItem } from '../../interfaces/CartItem';
 import {
   selectCart,
   saveTotal,
   selectCartTotal,
-  // selectOrder,
   saveOrder,
-  changeModalVisibility
-
+  changeModalVisibility,
+  selectOrder
 } from '../../redux/cartSlice';
 import './cart.scss';
+import { submit } from '../../utils/submitOrder';
+import OrderStatus from '../orderStatus/OrderStatus';
 
 const Cart = () => {
   const cart = useSelector(selectCart);
+  const existingOrder = useSelector(selectOrder);
   const cartTotal = useSelector(selectCartTotal);
   // const order = useSelector(selectOrder);
   const dispatch = useDispatch();
@@ -35,23 +36,13 @@ const Cart = () => {
     }
   });
 
-  const submitOrder = async () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'React POST Request Example' })
-    };
-    
-    const data = await fetch('https://private-anon-941fd21a9a-pizzaapp.apiary-mock.com/orders/', requestOptions);
-    if (data.ok) {
-      const orderData = await data.json();
-      dispatch(saveOrder(orderData));
-      dispatch(changeModalVisibility(true));
-    } else {
-      const errorMessage = `An error occurred: ${data.status}`;
-      throw new Error(errorMessage);
-    }
+  const sendOrder = async () => {
+    const data = await submit()
+    dispatch(saveOrder(data));
+    dispatch(changeModalVisibility(true));
   };
+
+  console.log('in cart', existingOrder.status);
   
   if (cart && cart.length > 0) {
     return (
@@ -63,13 +54,14 @@ const Cart = () => {
           </div>
         ))}
         <p className='cart-total'>Total: {cartTotal}sek</p>
-        <button onClick={submitOrder}>Submit cart</button>
+        <button onClick={sendOrder}>Submit cart</button>
       </section>
     )
   } else {
     return (
       <section className='cart'>
         <h2 className='section-heading grey'>Cart empty...</h2>
+        {existingOrder && existingOrder.status === 'ordered' && <OrderStatus />}
       </section>
     )
   }

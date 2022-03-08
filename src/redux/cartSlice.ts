@@ -70,14 +70,14 @@ export const CartSlice = createSlice({
             state.initialModalVisible.modalVisible = action.payload
         },
         saveOrder:  (state, action: PayloadAction<IOrderConfirmation>) => {
-            let orderToAdd = {
+            let orderToSave = {
                 orderId: action.payload.orderId,
                 totalPrice: action.payload.totalPrice,
                 orderedAt: action.payload.orderedAt,
                 status: action.payload.status,
                 esitmatedDelivery: action.payload.esitmatedDelivery
             }
-            state.initialOrder = orderToAdd
+            state.initialOrder = orderToSave
         },
     },
 });
