@@ -10,7 +10,8 @@ import {
     changeMenuDetailVisibility
 } from '../../redux/menuSlice';
 import {
-    saveRestaurant
+    saveRestaurantName,
+    saveRestaurantId
 } from '../../redux/restaurantSlice';
 
 const Restaurant = (restaurant: IRestaurant) => {
@@ -21,7 +22,8 @@ const Restaurant = (restaurant: IRestaurant) => {
         dispatch(saveMenu([]));
         const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/${restaurantId}/menu`);
         dispatch(saveMenu(data));
-        dispatch(saveRestaurant(restaurant.name));
+        dispatch(saveRestaurantName(restaurant.name));
+        dispatch(saveRestaurantId(restaurantId));
         dispatch(changeMenuVisibility(true));
     };
 

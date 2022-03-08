@@ -5,12 +5,20 @@ import {
 import { RootState } from './store';
 
 interface IRestaurantState {
-    name: string
+    name: string,
 };
 
 const initialRestaurantState: IRestaurantState = {
     name: '',
 };
+
+interface IRestaurantId {
+    id: number,
+}
+
+const initialRestaurantId: IRestaurantId = {
+    id: NaN
+}
 
 interface IClickedState {
     greyedOut: boolean
@@ -25,11 +33,15 @@ export const restaurantSlice = createSlice({
     initialState: {
         initialRestaurantState,
         initialClickedState,
+        initialRestaurantId,
     }, 
     reducers: {
-        saveRestaurant: (state, action: PayloadAction<string>) => {
+        saveRestaurantName: (state, action: PayloadAction<string>) => {
             state.initialRestaurantState.name = action.payload
         },
+        saveRestaurantId: (state, action: PayloadAction<number>) => {
+            state.initialRestaurantId.id = action.payload
+        }, 
         changeClickedStateHeading: (state, action: PayloadAction<boolean>) => {
             state.initialClickedState.greyedOut = action.payload
         }
@@ -37,11 +49,14 @@ export const restaurantSlice = createSlice({
 });
 
 export const {
-    saveRestaurant,
-    changeClickedStateHeading
+    saveRestaurantName,
+    changeClickedStateHeading,
+    saveRestaurantId
 } = restaurantSlice.actions;
 
 export const selectRestaurant = (state: RootState) => state.restaurant.initialRestaurantState.name;
+
+export const selectRestaurantId = (state: RootState) => state.restaurant.initialRestaurantId.id;
 
 export const selectClickedStateHeading = (state: RootState) => state.restaurant.initialClickedState;
 

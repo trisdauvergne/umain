@@ -12,20 +12,28 @@ import {
   selectDetailsVisibility,
   changeMenuDetailVisibility
 } from '../../redux/menuSlice';
-import { selectRestaurant } from '../../redux/restaurantSlice';
+import {
+  selectRestaurant,
+  selectRestaurantId
+} from '../../redux/restaurantSlice';
 import { addToCart } from '../../redux/cartSlice';
 
 const Menus = () => {
   const menu = useSelector(selectMenu);
   const visibleDetails = useSelector(selectDetailsVisibility);
   const restaurantName = useSelector(selectRestaurant);
+  const restaurantId = useSelector(selectRestaurantId)
   const dispatch = useDispatch();
   
   const [ itemsByCategory, setItemsByCategory ] = useState<IMenuItem[]>([]);
   const [ itemCategory, setItemCategory ] = useState('');
 
   const addItemToCart = (item: IMenuItem) => {
-    dispatch(addToCart(item));
+    let itemWithId = {
+      ...item,
+      restaurantId
+    };
+    dispatch(addToCart(itemWithId));
   };
 
   let newArr: string[] = [];
