@@ -2,11 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://umain-pizza.netlify.app).
 
-The project has been deployed [here]
+The project has been deployed [here](https://umain-pizza.netlify.app/)
 
 ## Code Test Brief
 
-xxxxx
+_The code challenge is a “Pizza Ordering App”_
+
+_Your task is to build an app for ordering Pizza with mocked APIs from the Apiary specification using React._
+
+- _Show a list of pizza restaurants and have the closest to your current location at the top_
+- _From the list enter into a detailed view for that restaurant and display the available menu for that location._
+- _Let the users add items from the menu into a shopping cart_
+- _Place the order_
+- _Display the orders state_
 
 ## Approach and process
 
@@ -28,31 +36,45 @@ xxxxx
 
 #### Cart
 
-- After rendering menu data into the app from the store, I moved on to the cart and adding items to it. I started by creating a component for the cart. I also knew that the cart itself would be stored using Redux so created a slice for the cart itself. The process for creating the cart was similar to the menu, in that there would be an array of items that matched a cart Item interface. The reducer function for adding an item to the existing cart then just spreads the existing values in the array and adds the new action payload to it
-- I then followed a similar process to when working on the menu component, in now using Redux’s useSelector to access the cart data in the store, then rendering that data on to the cart itself. I also decided to create a simple clear cart function within the cart which simply replaces the cart state with an empty array in the reducer function
+- After rendering menu data into the app from the store, I moved on to the cart and adding items to it. I started by creating a component for the cart. I also knew that the cart itself would be stored using Redux so created a slice for the cart itself. The process for creating the cart was similar to the menu, in that there would be an array of items that matched the cart item interface. The reducer function for adding an item to the existing cart then just spread the values of the array and add the new item as an action payload to it
+- I then followed a similar process as when working on the menu component, in now using Redux’s useSelector to access the cart data in the store, then rendering that data on to the cart itself. I also decided to create a simple clear cart function within the cart which simply replaces the cart state with an empty array in the reducer function
 
-- Placing an order
+#### Placing an order
+
 - Towards the end of the project I would implement the functionality for placing an order. I decided to add the trigger for this function into the cart component, with a button underneath the items within the cart. By clicking on the place order button, a post is triggered to the API sending the cart as the body. I placed the functionality for submitting the order into a separate helper function as I had done this previously for functions which made calls to the API
 - When the order is placed a modal appears with order confirmation with the order status, ID and estimated delivery appears which then clears the the cart when OK is pressed
 - I anticipated that the order information might need to be made available to other components of the app, so created an order store where order information could be stored with Redux. When an order is placed, the response is saved in the store and then can be accessed by the component which shows the order status after an order is placed
 - I decided that clicking the OK button in the modal would not only close the modal but also clear the cart and hide the restaurant menus
 
-- Order status
+#### Order status
+
 - I hadn’t initially planned for somewhere to show the status of the order, but felt that the best place for this would be in the cart. After pressing the OK button inside the modal, the order status then appears in the cart. When it appears in the cart the component is immediately visible so the user notices it, however its visibility can be changed if wanted
 
-#### Future improvements
+#### Styling
 
-- Remove items from cart
+- I decided to keep styling quite minimal for this code test
+- I installed sass as this would allow me to use variables for consistency such as spacing, colors and fonts
+- The layout attemps to replicate a one sheet menu from a pizza restaurant
 
-Challenges and steps to try and overcome them
+## Challenges and steps to try and overcome them
 
 - Testing proved to be a challenge for me and highlighted this as an area for improvement. I found it challenging as tests were being performed on asynchronous elements and started with the first test which checked when the restaurants were rendered after the initial fetch, as the test ran before the fetch was complete. It took me a while to find a solution for this, which I came across in the testing library docs. The solution worked for this purpose but then didn’t work when I tried to apply it to further tests beyond this. I didn’t manage to write any tests beyond the test in the restaurant component but have kept in the test files along with the types tests I would have run. In addition to tests being performed on asynchronous elements, I think the decision to use Redux also added an additional layer of complexity
-- I have used type any in a couple of
+- I tried to avoid using type 'any', however have used it twice in the app - once in the GetLocation function and in the function for getting the location. Specifying the type created more errors and I will continue exploring the cause of the errors as I understand using 'any' defeats the purpose of TypeScript
+- The location functionality was challenging and I relied on existing solutions which I found online
 
-### Packages used
+## Future improvements
 
-npm install --save-dev jest-fetch-mock - for testing after fetch
-npm install @reduxjs/toolkit - for sharing state
-npm install react-redux
-npm i -D node-sass
-npm i -D @types/node-sass
+- I would switch to Axios instead of using fetch as I discovered that Axios works best across all browsers
+- The functionality to fetch a menu is very clunky and I think this could be streamlined when I have developed a better understanding of modifying and creating objects with TypeScript and Redux
+- Testing
+- Responsiveness is very basic at the moment and currently performs best on desktop
+- Animations could be added to help guide the user on to next steps
+- More state changes to highlight the user's current stage in the process
+- Cart item and menu item interfaces are practically identical
+- The location functionality could be moved into its own helper function and also rewritten for extra clarity
+
+## Packages used
+
+- **jest-fetch-mock** - for exploring testing after fetch
+- **@reduxjs/toolkit** and **react-redux**- for state management
+- **node-sass** and **@types/node-sass** - for additional features with styling
