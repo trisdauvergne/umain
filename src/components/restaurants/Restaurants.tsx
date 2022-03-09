@@ -20,7 +20,7 @@ const Restaurants = () => {
         console.log(location);
         
         // Function borrowed from here: https://yogeshnogia.medium.com/program-to-sort-the-given-array-of-objects-having-lat-lng-by-distance-from-your-given-location-9052eb45f86d
-        
+
         const getDistanceFromLatLonInKm = (lat1: number, lon1: number, lat2: number,lon2: number) => {
             const R = 6371;
             const dLat = deg2rad(lat2-lat1);
@@ -61,7 +61,6 @@ const Restaurants = () => {
                     <Restaurant {...restaurant} key={i}/>
                     ))}
                 </div>
-                <p className='small-txt'>{location.loaded ? JSON.stringify(location) : "Location data loading"}</p>
             </section>
         )
     } else {
