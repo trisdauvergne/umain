@@ -13,7 +13,8 @@ import {
   changeModalVisibility,
   selectCart,
   selectCartTotal,
-  selectOrder
+  selectOrder,
+  clearCart
 } from '../../redux/cartSlice';
 import './cart.scss';
 import { submit } from '../../utils/submitOrder';
@@ -25,7 +26,7 @@ const Cart = () => {
   const cartTotal = useSelector(selectCartTotal);
   const dispatch = useDispatch();
 
-  const [ showOrderStatus, setShowOrderStatus ] = useState(false);
+  const [ showOrderStatus, setShowOrderStatus ] = useState(true);
 
   let prices: number[] = [];
   
@@ -45,24 +46,37 @@ const Cart = () => {
 
   const changeOrderStatusVisibility = () => {
     setShowOrderStatus(!showOrderStatus);
+  };
+
+  const clearOrders = () => {
+    dispatch(clearCart());
   }
+
+  const orderStatusDiv =
+    <div>
+        <button onClick={changeOrderStatusVisibility}>{showOrderStatus ? `Hide order` : `Show order`}</button>
+        {showOrderStatus && <OrderStatus />}
+    </div>
+  ;
   
   if (cart && cart.length > 0) {
     return (
       <section className='cart'>
-        <h2 className='section-heading'>{cart.length} items in cart</h2>
+        <h2 className='section-heading'>{cart.length === 1 ? `1 item in cart` : `${cart.length} items in cart`}</h2>
         {cart.map((item: IMenuItem, i: number) => (
           <div key={i}>
             <p>{item.name}, {item.price}sek</p>
           </div>
         ))}
         <p className='cart-total'>Total: {cartTotal}sek</p>
-        <button onClick={sendOrder}>Place order</button>
-        {existingOrder && existingOrder.status === 'ordered' &&
-          <div>
-            <button onClick={changeOrderStatusVisibility}>Show placed orders</button>
-            {showOrderStatus && <OrderStatus />}
-          </div>
+        <div>
+          <button onClick={clearOrders}>Clear cart</button>
+          <button onClick={sendOrder}>Place order</button>
+        </div>
+        {existingOrder && existingOrder.status === 'ordered' && 
+        <>
+          {orderStatusDiv}
+        </>
         }
       </section>
     )
@@ -70,7 +84,11 @@ const Cart = () => {
     return (
       <section className='cart'>
         <h2 className='section-heading grey'>Cart empty...</h2>
-        {existingOrder && existingOrder.status === 'ordered' && <OrderStatus />}
+        {existingOrder && existingOrder.status === 'ordered' &&
+        <>
+          {orderStatusDiv}
+        </>
+        }
       </section>
     )
   }

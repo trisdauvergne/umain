@@ -23,10 +23,6 @@ const Modal = () => {
     const order = useSelector(selectOrder);
     const dispatch = useDispatch();
 
-    const closeModal = () => {
-        dispatch(changeModalVisibility(false));
-    };
-
     const sendOrder = () => {
         dispatch(changeModalVisibility(false));
         dispatch(clearCart());
@@ -41,14 +37,13 @@ const Modal = () => {
     
     return (
         <section className='modal'>
-            <h2 className='section-heading'>Your order</h2>
+            <h2 className='section-heading'>Order confirmation</h2>
             <p>Order ID: {order.orderId}</p>
             <p>Status: {order.status}</p>
-            <p>Esimated delivery: {order.esitmatedDelivery.toLocaleString()}</p>
+            <p>Esimated delivery: {order.esitmatedDelivery}</p>
             <h4>Total: {cartTotal}sek</h4>
             <div className="modal-btns">
                 <button onClick={sendOrder}>OK</button>
-                <button onClick={closeModal}>Cancel</button>
             </div>
         </section>
     )

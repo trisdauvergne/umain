@@ -20,10 +20,10 @@ describe('Menus component', () => {
     });
 
     test(`2. That the menu categories heading loads on render`, async () => {
-        // render(
-        //     <Provider store={store}>
-        //         <Menus />
-        //     </Provider>
-        // );
+    
+    });
+
+    test(`3. Test that the details are loaded after clicking on a category`, () => {
+
     });
 })

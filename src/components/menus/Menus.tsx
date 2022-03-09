@@ -65,7 +65,7 @@ const Menus = () => {
               <button onClick={() => filterType(item)} key={i}>{item}</button>
             ))}
           </div>}
-          <div className='menu-details'>
+          <div data-testid='menu-details' className='menu-details'>
             {visibleDetails && <h4>{itemCategory}</h4>}
             {visibleDetails && itemsByCategory && itemsByCategory.map((item: IMenuItem, i: number) => (
               <div key={i}>

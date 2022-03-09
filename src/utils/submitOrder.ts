@@ -1,4 +1,6 @@
-export const submit = async (cart: any) => {
+import { ICartItem } from "../interfaces/CartItem";
+
+export const submit = async (cart: ICartItem[]) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -8,7 +10,6 @@ export const submit = async (cart: any) => {
       const data = await fetch('https://private-anon-941fd21a9a-pizzaapp.apiary-mock.com/orders/', requestOptions);
       if (data.ok) {
         const orderData = await data.json();
-        console.log(orderData);
         return orderData;
       } else {
         const errorMessage = `An error occurred: ${data.status}`;
