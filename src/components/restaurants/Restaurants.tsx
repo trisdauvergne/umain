@@ -46,7 +46,7 @@ const Restaurants = () => {
 
     useEffect(() => {
         fetchRestaurantData();
-    }, []);
+    }, [location]);
 
 
     if (restaurants && restaurants.length > 0) {
