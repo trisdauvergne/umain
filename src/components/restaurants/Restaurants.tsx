@@ -31,7 +31,7 @@ const Restaurants = () => {
                     <Restaurant {...restaurant} key={i}/>
                     ))}
                 </div>
-                <p>{location.loaded ? JSON.stringify(location) : "Location data loading"}</p>
+                <p className='small-txt'>{location.loaded ? JSON.stringify(location) : "Location data loading"}</p>
             </section>
         )
     } else {

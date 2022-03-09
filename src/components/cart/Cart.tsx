@@ -1,5 +1,6 @@
 import React, {
   useEffect,
+  useState
 } from 'react';
 import {
   useSelector,
@@ -7,11 +8,11 @@ import {
 } from 'react-redux';
 import { IMenuItem } from '../../interfaces/MenuItem';
 import {
-  selectCart,
   saveTotal,
-  selectCartTotal,
   saveOrder,
   changeModalVisibility,
+  selectCart,
+  selectCartTotal,
   selectOrder
 } from '../../redux/cartSlice';
 import './cart.scss';
@@ -23,6 +24,8 @@ const Cart = () => {
   const existingOrder = useSelector(selectOrder);
   const cartTotal = useSelector(selectCartTotal);
   const dispatch = useDispatch();
+
+  const [ showOrderStatus, setShowOrderStatus ] = useState(false);
 
   let prices: number[] = [];
   
@@ -39,6 +42,10 @@ const Cart = () => {
     dispatch(saveOrder(data));
     dispatch(changeModalVisibility(true));
   };
+
+  const changeOrderStatusVisibility = () => {
+    setShowOrderStatus(!showOrderStatus);
+  }
   
   if (cart && cart.length > 0) {
     return (
@@ -50,7 +57,13 @@ const Cart = () => {
           </div>
         ))}
         <p className='cart-total'>Total: {cartTotal}sek</p>
-        <button onClick={sendOrder}>Submit cart</button>
+        <button onClick={sendOrder}>Place order</button>
+        {existingOrder && existingOrder.status === 'ordered' &&
+          <div>
+            <button onClick={changeOrderStatusVisibility}>Show placed orders</button>
+            {showOrderStatus && <OrderStatus />}
+          </div>
+        }
       </section>
     )
   } else {

@@ -47,7 +47,7 @@ const Modal = () => {
             <p>Esimated delivery: {order.esitmatedDelivery.toLocaleString()}</p>
             <h4>Total: {cartTotal}sek</h4>
             <div className="modal-btns">
-                <button onClick={sendOrder}>Submit order</button>
+                <button onClick={sendOrder}>OK</button>
                 <button onClick={closeModal}>Cancel</button>
             </div>
         </section>

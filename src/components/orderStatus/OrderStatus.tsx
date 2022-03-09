@@ -33,7 +33,7 @@ const OrderStatus = () => {
         <section className='order-status'>
             {placedOrder && placedOrder.orderedAt !== '' && (
                 <div>
-                    <h3>Order Status: {placedOrder.status}</h3>
+                    <h3>Placed order</h3>
                     <p>Status: {placedOrder.status}</p>
                     <p>Order id: {placedOrder.orderId}</p>
                     <div>
