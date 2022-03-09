@@ -38,7 +38,7 @@ const Cart = () => {
   });
 
   const sendOrder = async () => {
-    const data = await submit()
+    const data = await submit(cart)
     dispatch(saveOrder(data));
     dispatch(changeModalVisibility(true));
   };

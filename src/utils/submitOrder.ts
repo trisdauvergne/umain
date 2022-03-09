@@ -1,13 +1,14 @@
-export const submit = async () => {
+export const submit = async (cart: any) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'React POST Request Example' })
+        body: JSON.stringify(cart)
       };
       
       const data = await fetch('https://private-anon-941fd21a9a-pizzaapp.apiary-mock.com/orders/', requestOptions);
       if (data.ok) {
         const orderData = await data.json();
+        console.log(orderData);
         return orderData;
       } else {
         const errorMessage = `An error occurred: ${data.status}`;
