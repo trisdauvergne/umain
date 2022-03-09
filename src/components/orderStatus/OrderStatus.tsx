@@ -6,6 +6,7 @@ import {
 import {
     selectOrder
 } from '../../redux/cartSlice';
+import { IPizzaApiCartItem } from '../../interfaces/Order';
 import {
     saveOrderStatus,
     selectPlacedOrder
@@ -16,6 +17,7 @@ import { getOrderDetails } from '../../utils/getOrderDetails';
 const OrderStatus = () => {
     const order = useSelector(selectOrder);
     const placedOrder = useSelector(selectPlacedOrder);
+
     const dispatch = useDispatch();
 
     const fetchDetails = async () => {
@@ -34,7 +36,7 @@ const OrderStatus = () => {
                     <p>Order id: {placedOrder.orderId}</p>
                     <div>
                         <p>Items:</p>
-                        {placedOrder.cart.map((item: any, i: number) =>(
+                        {placedOrder.cart.map((item: IPizzaApiCartItem, i: number) =>(
                             <div key={i}>
                                 <p>Item ID: {item.menuItemId}</p>
                                 <p>Quantity: {item.quantity}</p>

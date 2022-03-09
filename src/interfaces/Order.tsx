@@ -9,3 +9,8 @@ export interface IOrder {
         totalPrice: number,
     }
 }
+
+export interface IPizzaApiCartItem {
+    menuItemId: number,
+    quantity: number
+}

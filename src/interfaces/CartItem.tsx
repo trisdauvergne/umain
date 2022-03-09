@@ -6,4 +6,4 @@ export interface ICartItem {
     price: number,
     rank?: number,
     restaurantId: number
-}
+};

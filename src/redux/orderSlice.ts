@@ -3,9 +3,10 @@ import {
     PayloadAction
 } from '@reduxjs/toolkit';
 import { RootState } from './store';
+import { IPizzaApiCartItem } from '../interfaces/Order';
 
 interface IOrder {
-    cart: string[],
+    cart: IPizzaApiCartItem[],
     esitmatedDelivery: string,
     orderId: number,
     orderedAt: string,
@@ -23,6 +24,8 @@ const initialOrderState: IOrder = {
     status: '',
     totalPrice: NaN,
 }
+
+
 
 export const OrderSlice = createSlice({
     name: 'order',
