@@ -16,8 +16,11 @@ const Restaurants = () => {
         let data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);        
         const lng: number = Number(location.coordinates.lng);
         const lat: number = Number(location.coordinates.lat);
+        console.log(lng, lat);
+        console.log(location);
         
         // Function borrowed from here: https://yogeshnogia.medium.com/program-to-sort-the-given-array-of-objects-having-lat-lng-by-distance-from-your-given-location-9052eb45f86d
+        
         const getDistanceFromLatLonInKm = (lat1: number, lon1: number, lat2: number,lon2: number) => {
             const R = 6371;
             const dLat = deg2rad(lat2-lat1);
@@ -46,7 +49,7 @@ const Restaurants = () => {
 
     useEffect(() => {
         fetchRestaurantData();
-    }, [location]);
+    }, []);
 
 
     if (restaurants && restaurants.length > 0) {
