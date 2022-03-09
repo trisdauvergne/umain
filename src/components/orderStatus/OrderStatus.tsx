@@ -1,6 +1,4 @@
-import React, {
-    useEffect,
-} from 'react';
+import React from 'react';
 import {
     useSelector,
     useDispatch
@@ -23,11 +21,9 @@ const OrderStatus = () => {
     const fetchDetails = async () => {
         const data = await getOrderDetails(order.orderId);
         dispatch(saveOrderStatus(data));
-    }
+    };
 
-    useEffect(() => {
-        fetchDetails();
-    }, []);
+    fetchDetails();
     
     return (
         <section className='order-status'>

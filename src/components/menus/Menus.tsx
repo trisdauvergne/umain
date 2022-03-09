@@ -38,11 +38,11 @@ const Menus = () => {
     dispatch(addToCart(itemWithId));
   };
 
-  let newArr: string[] = [];
+  let categoryArr: string[] = [];
 
   menu.forEach((item) => {
-    if (!newArr.includes(item.category)) {
-      newArr.push(item.category);
+    if (!categoryArr.includes(item.category)) {
+      categoryArr.push(item.category);
     }
   });
 
@@ -61,7 +61,7 @@ const Menus = () => {
         <h2 data-testid='menu-heading' className='section-heading'>{restaurantName}'s menu</h2>
         <div className='menu-container'>
           {visibleMenu && <div data-testid='menu-categories' className='menu-categories'>
-            {newArr.map((item, i: number) => (
+            {categoryArr.map((item, i: number) => (
               <button onClick={() => filterType(item)} key={i}>{item}</button>
             ))}
           </div>}

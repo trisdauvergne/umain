@@ -1,5 +1,6 @@
 @import "../../styles/font";
 @import "../../styles/spacing";
+@import "../../styles/color";
 
 header {
   text-align: center;
@@ -12,7 +13,7 @@ header {
   font-weight: 900;
   height: 12vh;
   padding: 0 3rem;
-  color: forestgreen;
-  border: 3px solid tomato;
+  color: $green;
+  border: 3px solid $red;
   box-shadow: 15px 15px black;
 }

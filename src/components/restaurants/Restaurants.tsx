@@ -13,8 +13,35 @@ const Restaurants = () => {
     const location = GetLocation();
 
     const fetchRestaurantData = async () => {
-        const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);
-        setRestaurants(data);
+        let data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);        
+        const lng: number = Number(location.coordinates.lng);
+        const lat: number = Number(location.coordinates.lat);
+        
+        // Function borrowed from here: https://yogeshnogia.medium.com/program-to-sort-the-given-array-of-objects-having-lat-lng-by-distance-from-your-given-location-9052eb45f86d
+        const getDistanceFromLatLonInKm = (lat1: number, lon1: number, lat2: number,lon2: number) => {
+            const R = 6371;
+            const dLat = deg2rad(lat2-lat1);
+            const dLon = deg2rad(lon2-lon1);
+            const a =
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            const d = R * c;
+            return d;
+        }
+
+        const deg2rad = (deg: number) => {
+            return deg * (Math.PI/180)
+        };
+
+        for(let i = 0; i<data.length; i++) {
+            let distance = getDistanceFromLatLonInKm(lat, lng, data[i].latitude, data[i].longitude); 
+            data[i].distance = distance;
+        };
+
+        let dataByDistance = data.sort((a: any, b: any) => a.distance - b.distance)
+        setRestaurants(dataByDistance);
     };
 
     useEffect(() => {

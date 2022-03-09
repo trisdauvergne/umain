@@ -69,9 +69,9 @@ const Cart = () => {
           </div>
         ))}
         <p className='cart-total'>Total: {cartTotal}sek</p>
-        <div>
-          <button onClick={clearOrders}>Clear cart</button>
+        <div className='cart-btns'>
           <button onClick={sendOrder}>Place order</button>
+          <button onClick={clearOrders}>Clear cart</button>
         </div>
         {existingOrder && existingOrder.status === 'ordered' && 
         <>

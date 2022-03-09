@@ -4,6 +4,16 @@
   font-size: 1.5rem;
 }
 
+.cart-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cart-btns > button {
+  margin-bottom: 0;
+}
+
 @media (max-width: 768px) {
   .cart {
     display: grid;

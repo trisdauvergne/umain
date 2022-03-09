@@ -56,6 +56,10 @@ button:hover {
   box-shadow: 5px 5px $grey;
 }
 
+button:active {
+  border: 3px solid $green;
+}
+
 li {
   font-family: $body;
 }
