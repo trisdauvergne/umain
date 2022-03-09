@@ -71,7 +71,7 @@ const Menus = () => {
               <div key={i}>
                 <p>{item.name}, {item.price}sek</p>
                 {item.topping && item.topping.map((item: string, i: number) => <li key={i}>{item}</li>)}
-                <button onClick={() => addItemToCart(item)}>Add {item.name} to cart</button>
+                <button data-testid='add-item' onClick={() => addItemToCart(item)}>Add {item.name} to cart</button>
               </div>
             ))}
           </div>

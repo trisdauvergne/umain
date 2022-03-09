@@ -65,7 +65,7 @@ const Cart = () => {
         <h2 className='section-heading'>{cart.length === 1 ? `1 item in cart` : `${cart.length} items in cart`}</h2>
         {cart.map((item: IMenuItem, i: number) => (
           <div key={i}>
-            <p>{item.name}, {item.price}sek</p>
+            <p data-testid='cart-item'>{item.name}, {item.price}sek</p>
           </div>
         ))}
         <p className='cart-total'>Total: {cartTotal}sek</p>
