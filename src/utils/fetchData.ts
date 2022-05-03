@@ -1,5 +1,5 @@
 export const fetchData = async (url: string) => {
-    const data = await fetch(url);
+    const data = await fetch(url, { mode: 'cors' });
     if (data.ok) {
         const returnData = await data.json();
         return returnData;

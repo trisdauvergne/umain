@@ -18,7 +18,8 @@ const Restaurant = (restaurant: IRestaurant) => {
     const fetchMenuData = async (restaurantId: number, restaurant: IRestaurant) => {
         dispatch(changeMenuDetailVisibility(false));
         dispatch(saveMenu([]));
-        const data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/${restaurantId}/menu`);
+        // API url has changed
+        const data = await fetchData(`https://private-anon-af5dcba044-pizzaapp.apiary-mock.com/restaurants/${restaurantId}/menu`);
         dispatch(saveMenu(data));
         dispatch(saveRestaurantName(restaurant.name));
         dispatch(saveRestaurantId(restaurantId));

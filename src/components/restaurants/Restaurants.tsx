@@ -13,7 +13,8 @@ const Restaurants = () => {
     const location = GetLocation();
 
     const fetchRestaurantData = async () => {
-        let data = await fetchData(`https://private-anon-1a660f2cea-pizzaapp.apiary-mock.com/restaurants/`);        
+        // URL had changed
+        let data = await fetchData(`https://private-anon-af5dcba044-pizzaapp.apiary-mock.com/restaurants/`);        
         const lng: number = Number(location.coordinates.lng);
         const lat: number = Number(location.coordinates.lat);
         console.log(lng, lat);
