@@ -7,7 +7,7 @@ export const submit = async (cart: ICartItem[]) => {
         body: JSON.stringify(cart)
       };
       
-      const data = await fetch('https://private-anon-941fd21a9a-pizzaapp.apiary-mock.com/orders/', requestOptions);
+      const data = await fetch('https://private-anon-af5dcba044-pizzaapp.apiary-mock.com/orders/', requestOptions);
       if (data.ok) {
         const orderData = await data.json();
         return orderData;
